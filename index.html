@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <title>Javascript Assignment</title>
+        <script type="text/javascript">
+            window.onload= function GenerateTable() {
+                //Build an array containing Customer records.
+                var customers = new Array();
+                customers.push(["Name", "Age", "DOB" ,"Email" , "Company"]);
+                customers.push(["John Hammond", 24, "24/5/1995","john.hammond@amazon.in","Amazon"]);
+                customers.push(["Mudassar Khan", 26, "20/8/2000" ,"Mudassar.Khan@geminisolutions.in" ,"Gemini Solutions" ]);
+                customers.push(["Suzanne Mathews",23, "13/6/2001" , "Suzzanae.mathews@microsoft.in" ,"Microsoft"]);
+                customers.push(["Robert Schidner", 35,"21/7/1990" , "Robert.Schinder@globallogic.in" ,"Global logic"]);
+                customers.push(["Adarsh Sharma", 25,"20/8/1990" , "Adarsh.sharma@genpact.in" ,"Genpact"]);
+                //Create a HTML Table element.
+                var table = document.createElement("TABLE");
+                table.border = "1";
+         
+                //Get the count of columns.
+                var columnCount = customers[0].length;
+         
+                //Add the header row.
+                var row = table.insertRow(-1);
+                for (var i = 0; i < columnCount; i++) {
+                    var headerCell = document.createElement("TH");
+                    headerCell.innerHTML = customers[0][i];
+                    row.appendChild(headerCell);
+                }
+         
+                //Add the data rows.
+                for (var i = 1; i < customers.length; i++) {
+                    row = table.insertRow(-1);
+                    for (var j = 0; j < columnCount; j++) {
+                        var cell = row.insertCell(-1);
+                        cell.innerHTML = customers[i][j];
+                    }
+                }
+         
+                var dvTable = document.getElementById("dvTable");
+                dvTable.innerHTML = "";
+                dvTable.appendChild(table);
+            }
+        </script>
+    </head>
+    <body>
+        <div id="dvTable"></div>
+    </body>
+</html>
